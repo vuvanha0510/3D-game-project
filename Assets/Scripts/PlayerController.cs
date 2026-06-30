@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.sleepThreshold = 0.0f;
         count = 0;
         SetCountText();
         winTextObject.SetActive(false);
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            CameraShake.Instance.Shake(0.25f, 0.15f);
             Destroy(gameObject);
 
             // winTextObject la Component thi phai co .gameObject
